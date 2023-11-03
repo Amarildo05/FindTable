@@ -1,7 +1,7 @@
 import { PRICE } from "@prisma/client";
 
 export default function Price({ price }: { price: PRICE }) {
-  const renderPRice = () => {
+  const renderPrice = () => {
     if (price === PRICE.CHEAP) {
       return (
         <>
@@ -23,5 +23,5 @@ export default function Price({ price }: { price: PRICE }) {
     }
   };
 
-  return <p className="flex mr-3">{renderPRice()}</p>;
+  return <p className="flex mr-3">{renderPrice()}</p>;
 }
