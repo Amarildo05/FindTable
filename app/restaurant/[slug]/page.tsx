@@ -46,8 +46,6 @@ export default async function RestaurantDetails({
 }) {
   const restaurant = await fetchRestaurantBySlug(params.slug);
 
-  //test
-  console.log({ restaurant });
   return (
     <>
       <div className="bg-white w-[70%] rounded p-3 shadow">
@@ -56,15 +54,7 @@ export default async function RestaurantDetails({
         <Rating />
         <Description description={restaurant.description} />
         <Images images={restaurant.images} />
-        {/* Reviews */}
-        <div>
-          <h1 className="font-bold text-3xl mt-10 mb-7 border-b pb-5">
-            What 100 people are saying
-          </h1>
-          <div>
-            <ReviewCard />
-          </div>
-        </div>
+        <ReviewCard />
       </div>
       <ReservationCard />
     </>
