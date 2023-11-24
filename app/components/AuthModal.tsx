@@ -2,7 +2,7 @@
 
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { useState } from "react";
+import React, { useState } from "react";
 import AuthModalInputs from "./AuthModalInputs";
 
 const style = {
@@ -24,6 +24,22 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignin ? signinContent : signupContent;
   };
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [inputs, setInputs] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    password: "",
+  });
 
   return (
     <div>
@@ -50,13 +66,17 @@ export default function AuthModal({ isSignin }: { isSignin: boolean }) {
               </p>
             </div>
             <div className="m-auto">
-              <h2 className="text-2xl font-light text-center">
+              <h2 className="text-xl font-light text-center">
                 {renderContent(
                   "Log Into Your Account",
-                  "Create Your FindTable Account"
+                  "Create Your Account"
                 )}
               </h2>
-              <AuthModalInputs />
+              <AuthModalInputs
+                inputs={inputs}
+                handleChangeInput={handleChangeInput}
+                isSignin={isSignin}
+              />
               <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 mt-2 disabled:bg-gray-400">
                 {renderContent("Sign In", "Create Account")}
               </button>
