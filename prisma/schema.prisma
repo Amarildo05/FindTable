@@ -65,7 +65,6 @@ model User {
   password   String
   email      String   @unique
   phone      String
-  user_id    Int
   reviews    Review[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
